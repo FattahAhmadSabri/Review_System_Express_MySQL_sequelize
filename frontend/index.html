@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Review System</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <h1>Review System</h1>
+
+    <form id="reviewForm" onsubmit="handleFormSubmit(event)">
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company" required />
+
+      <br />
+
+      <label for="pros">Pros:</label>
+      <input type="text" id="pros" name="pros" required />
+
+      <br />
+
+      <label for="cons">Cons:</label>
+      <input type="text" id="cons" name="cons" required />
+
+      <br />
+
+      <label>Rating:</label>
+
+      <div class="star-rating">
+        <input type="radio" id="star5" name="ratingStar" value="5" required />
+        <label for="star5">★</label>
+
+        <input type="radio" id="star4" name="ratingStar" value="4" />
+        <label for="star4">★</label>
+
+        <input type="radio" id="star3" name="ratingStar" value="3" />
+        <label for="star3">★</label>
+
+        <input type="radio" id="star2" name="ratingStar" value="2" />
+        <label for="star2">★</label>
+
+        <input type="radio" id="star1" name="ratingStar" value="1" />
+        <label for="star1">★</label>
+      </div>
+
+      <br />
+
+      <button type="submit">Submit</button>
+    </form>
+    <h2 id="averageRating"></h2>
+
+    <h2>All Reviews</h2>
+    <div id="reviewList"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
