@@ -1,7 +1,6 @@
 const { fn, col } = require("sequelize");
 const Review = require("../model/reviewSchema");
 
-
 const addReviewService = async (company, pros, cons, ratingStar) => {
   const result = await Review.create({ company, pros, cons, ratingStar });
   return result;
@@ -21,8 +20,20 @@ const getReviewService = async () => {
   };
 };
 
-const getCompanyByCompanyName =async (company)=>{
-  const result = await Review.findAll({where: {company}})
-  return result
-}
-module.exports = { addReviewService, getReviewService,getCompanyByCompanyName };
+const getCompanyByCompanyName = async (company) => {
+  const result = await Review.findAll({ where: { company } });
+  const averageRating = await Review.findOne({
+    attributes: [[fn("AVG", col("ratingStar")), "averageRating"]],
+    where: { company },
+    raw: true,
+  });;
+  return {
+    result,
+    averageRating: Number(averageRating.averageRating).toFixed(1),
+  };
+};
+module.exports = {
+  addReviewService,
+  getReviewService,
+  getCompanyByCompanyName,
+};

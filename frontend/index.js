@@ -68,7 +68,11 @@ const handleSearchCompany = async () => {
 
     console.log(response.data);
 
-    const reviews = response.data.data;
+    const reviews = response.data.data.result;
+    const averageRating = response.data.data.averageRating;
+
+    document.getElementById("averageRating").innerHTML =
+      `${company} Average Rating: ${averageRating} ⭐`;
 
     const reviewList = document.getElementById("reviewList");
 
