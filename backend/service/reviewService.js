@@ -20,4 +20,9 @@ const getReviewService = async () => {
     averageRating: Number(averageRating.averageRating).toFixed(1),
   };
 };
-module.exports = { addReviewService, getReviewService };
+
+const getCompanyByCompanyName =async (company)=>{
+  const result = await Review.findAll({where: {company}})
+  return result
+}
+module.exports = { addReviewService, getReviewService,getCompanyByCompanyName };

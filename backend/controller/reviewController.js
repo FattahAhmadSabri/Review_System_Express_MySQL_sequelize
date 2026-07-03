@@ -1,4 +1,4 @@
-const {addReviewService,getReviewService} =require("../service/reviewService")
+const {addReviewService,getReviewService, getCompanyByCompanyName} =require("../service/reviewService")
 const {
     successResponse,
     errorResponse,
@@ -33,4 +33,19 @@ const getAllreviewController = async(req,res)=>{
     }
 }
 
-module.exports ={addReviewController,getAllreviewController }
+const getDataByCompanyName=async(req,res)=>{
+    try {
+        const {company} = req.params
+    const response = await getCompanyByCompanyName(company)
+    return successResponse(
+      res,
+      `List of Review`,
+      response,
+      200,
+    );
+    } catch (error) {
+        return errorResponse(res, error.message, 500);  
+    }
+}
+
+module.exports ={addReviewController,getAllreviewController,getDataByCompanyName }
