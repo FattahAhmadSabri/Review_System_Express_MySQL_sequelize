@@ -60,4 +60,26 @@ const displayData = (obj) => {
   reviewList.appendChild(div);
 };
 
+const handleSearchCompany = async () => {
+  const company = document.getElementById("searchCompany").value;
+
+  try {
+    const response = await axios.get(`${api}/${company}`);
+
+    console.log(response.data);
+
+    const reviews = response.data.data;
+
+    const reviewList = document.getElementById("reviewList");
+
+    reviewList.innerHTML = "";
+
+    reviews.forEach((review) => {
+      displayData(review);
+    });
+  } catch (error) {
+    console.log("GET ERROR:", error);
+  }
+};
+
 getReviews();

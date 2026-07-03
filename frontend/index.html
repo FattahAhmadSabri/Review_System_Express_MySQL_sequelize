@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Review System</title>
+
     <link rel="stylesheet" href="./index.css" />
   </head>
 
@@ -15,17 +16,11 @@
       <label for="company">Company:</label>
       <input type="text" id="company" name="company" required />
 
-      <br />
-
       <label for="pros">Pros:</label>
       <input type="text" id="pros" name="pros" required />
 
-      <br />
-
       <label for="cons">Cons:</label>
       <input type="text" id="cons" name="cons" required />
-
-      <br />
 
       <label>Rating:</label>
 
@@ -46,14 +41,25 @@
         <label for="star1">★</label>
       </div>
 
-      <br />
-
       <button type="submit">Submit Review</button>
     </form>
+
     <h2 id="averageRating"></h2>
 
+    <div class="company-search">
+      <h2>Company Reviews</h2>
+
+      <div class="search-box">
+        <input type="text" id="searchCompany" placeholder="Search company" />
+
+        <button type="button" onclick="handleSearchCompany()">Search</button>
+      </div>
+    </div>
+
     <h2>All Reviews</h2>
+
     <div id="reviewList"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
   </body>
